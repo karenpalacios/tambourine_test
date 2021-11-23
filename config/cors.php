@@ -19,18 +19,21 @@ return [
         'api/*',
         '/login',
         '/logout',
+        '/home',
+        '/register',
+        '/user',
         '/sanctum/csrf-cookie'
     ],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://www.karenpalacios.com'],
 
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['XSRF-TOKEN', 'X-XSRF-TOKEN'],
 
     'max_age' => 0,
 
