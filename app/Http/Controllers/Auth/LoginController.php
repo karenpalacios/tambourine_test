@@ -10,20 +10,33 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 
-
+/*
+|--------------------------------------------------------------------------
+| Login Controller
+|--------------------------------------------------------------------------
+|
+| This controller handles the authentication of users
+|
+*/
 class LoginController extends Controller
 {
+
     use ApiResponse;
 
+    /**
+     * Login user.
+     *
+     * @param  array  $request
+     * @return \App\Traits\ApiResponse
+     */
     public function login(Request $request)
     {
-        //Sanitazing
+        //validate incoming request.
         $data = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        $error = [];
         $user  = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
@@ -39,7 +52,7 @@ class LoginController extends Controller
             'token' => $token
         ];
 
-        return response($response, 201);
+        return $this->success($response,'Logged!',201);
 
     }
 }
