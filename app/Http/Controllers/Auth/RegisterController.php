@@ -29,7 +29,7 @@ class RegisterController extends Controller
     */
 
     /**
-     * Get a validator for an incoming registration request.
+     * Creates a new user.
      *
      * @param  array  $request
      * @return \App\Traits\ApiResponse
