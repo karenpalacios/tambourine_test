@@ -17,11 +17,13 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::group(['middleware' => ['xss.sanitizer']], function () {
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+});
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
+
+
+
 
 //Auth::routes();
