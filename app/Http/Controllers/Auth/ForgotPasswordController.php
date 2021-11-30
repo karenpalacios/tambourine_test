@@ -26,7 +26,12 @@ class ForgotPasswordController extends Controller
         sendResetLinkEmail as unused;
     }
 
-
+    /**
+     * Send a reset link to the given user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function sendResetLinkEmail(Request $request)
     {
         $this->validateEmail($request);
