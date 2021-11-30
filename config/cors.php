@@ -21,6 +21,7 @@ return [
         '/logout',
         '/home',
         '/register',
+        '/password/*',
         '/user',
         '/sanctum/csrf-cookie'
     ],

@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return;
 });
 
 Route::group(['middleware' => ['xss.sanitizer']], function () {
     Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
     Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+    Route::post('/password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 });
